@@ -31,13 +31,10 @@ class UserControllerTest {
 
     @Test
     void testRegisterUser() {
-        // Given
-        UserRegistrationDTO registrationDTO = new UserRegistrationDTO(/* provide necessary details */);
+        UserRegistrationDTO registrationDTO = new UserRegistrationDTO("test@test.com", "password", "firstname", "lastname");
 
-        // When
         ResponseEntity<String> response = userController.registerUser(registrationDTO);
 
-        // Then
         verify(userService, times(1)).registerUser(registrationDTO);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Registration successful", response.getBody());
@@ -45,15 +42,12 @@ class UserControllerTest {
 
     @Test
     void testLoginUser_Success() {
-        // Given
-        UserLoginDTO loginDTO = new UserLoginDTO(/* provide necessary details */);
+        UserLoginDTO loginDTO = new UserLoginDTO("test@test.com", "password");
         when(userService.validateLoginData(loginDTO)).thenReturn(true);
         when(userService.generateJwtToken(loginDTO.getEmail())).thenReturn("dummyToken");
 
-        // When
         ResponseEntity<?> response = userController.loginUser(loginDTO);
 
-        // Then
         verify(userService, times(1)).validateLoginData(loginDTO);
         verify(userService, times(1)).generateJwtToken(loginDTO.getEmail());
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -62,14 +56,11 @@ class UserControllerTest {
 
     @Test
     void testLoginUser_InvalidPassword() {
-        // Given
-        UserLoginDTO loginDTO = new UserLoginDTO(/* provide necessary details */);
+        UserLoginDTO loginDTO = new UserLoginDTO("test@test.com", "password");
         when(userService.validateLoginData(loginDTO)).thenReturn(false);
 
-        // When
         ResponseEntity<?> response = userController.loginUser(loginDTO);
 
-        // Then
         verify(userService, times(1)).validateLoginData(loginDTO);
         verify(userService, never()).generateJwtToken(anyString());
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());

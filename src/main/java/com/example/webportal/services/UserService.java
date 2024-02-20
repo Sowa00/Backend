@@ -32,9 +32,6 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    /*@Value("${jwt.secret}")
-    private String jwtSecret;
-*/
     @Value("${jwt.expirationMs}")
     private long jwtExpirationMs;
 
@@ -49,27 +46,6 @@ public class UserService {
 
         userRepository.save(user);
     }
-
-
-/*    public void resetPassword(PasswordResetDTO resetDTO) {
-        // Walidacja danych i logika resetowania hasła
-        validateResetData(resetDTO);
-
-        User user = userRepository.findByEmail(resetDTO.getEmail())
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
-
-        String newPassword = resetDTO.getNewPassword();
-        String encodedPassword = passwordEncoder.encode(newPassword);
-
-        user.setPassword(encodedPassword);
-        userRepository.save(user);
-    }
-
-    public void validateResetData(PasswordResetDTO resetDTO) {
-        if (resetDTO.getEmail() == null || resetDTO.getNewPassword() == null) {
-            throw new IllegalArgumentException("Invalid reset password data");
-        }
-    }*/
 
     boolean validateRegistrationData(UserRegistrationDTO registrationDTO) {
         if (!isValidEmail(registrationDTO.getEmail())) {
@@ -104,10 +80,8 @@ public class UserService {
     }
 
     public String generateJwtToken(String username) {
-        // Tworzenie klucza o rozmiarze co najmniej 512 bitów
         SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
-        // Generacja JWT tokena
         String token = Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())

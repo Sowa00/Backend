@@ -34,57 +34,46 @@ class WeatherDataControllerTest {
 
     @Test
     void testGetWeatherDataForDay() {
-        // Given
         LocalDate date = LocalDate.now();
         List<WeatherData> testData = Arrays.asList(new WeatherData(), new WeatherData());
         when(weatherDataService.getWeatherDataForDay(date)).thenReturn(testData);
 
-        // When
         List<WeatherData> result = weatherDataController.getWeatherDataForDay(date);
 
-        // Then
         assertEquals(testData, result);
         verify(weatherDataService).getWeatherDataForDay(date);
     }
 
     @Test
     void testGetLatestWeatherDataTime() {
-        // Given
         WeatherData latestWeatherDataTime = new WeatherData();
         when(weatherDataService.getLatestWeatherDataTime()).thenReturn(latestWeatherDataTime);
 
-        // When
         WeatherData result = weatherDataController.getLatestWeatherDataTime();
 
-        // Then
         assertEquals(latestWeatherDataTime, result);
         verify(weatherDataService).getLatestWeatherDataTime();
     }
 
     @Test
     void testGetObservationData() {
-        // Given
         String startDate = "01.01.2022";
         String endDate = "05.01.2022";
         List<WeatherData> testData = Arrays.asList(new WeatherData(), new WeatherData());
         when(weatherDataService.getObservationsByDateRange(any(LocalDate.class), any(LocalDate.class)))
                 .thenReturn(testData);
 
-        // When
         List<WeatherData> result = weatherDataController.getObservationData(startDate, endDate);
 
-        // Then
         assertEquals(testData, result);
         verify(weatherDataService).getObservationsByDateRange(any(LocalDate.class), any(LocalDate.class));
     }
 
     @Test
     void testGetObservationDataWithInvalidDate() {
-        // Given
         String startDate = "invalid-date";
         String endDate = "2022-01-01";
 
-        // When, Then
         assertThrows(ResponseStatusException.class,
                 () -> weatherDataController.getObservationData(startDate, endDate));
     }

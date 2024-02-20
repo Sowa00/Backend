@@ -36,25 +36,20 @@ public class UserServiceTest {
 
     @Test
     void testRegisterUser_ValidRegistrationData_UserSaved() {
-        // Given
         UserRegistrationDTO registrationDTO = new UserRegistrationDTO("test@example.com", "password", "John", "Doe");
         when(userRepository.existsByEmail(registrationDTO.getEmail())).thenReturn(false);
         when(passwordEncoder.encode(registrationDTO.getPassword())).thenReturn("encodedPassword");
 
-        // When
         userService.registerUser(registrationDTO);
 
-        // Then
         verify(userRepository, times(1)).save(any(User.class));
     }
 
     @Test
     void testRegisterUser_DuplicateEmail_ThrowsDuplicateEmailException() {
-        // Given
         UserRegistrationDTO registrationDTO = new UserRegistrationDTO("existing@example.com", "password", "John", "Doe");
         when(userRepository.existsByEmail(registrationDTO.getEmail())).thenReturn(true);
 
-        // When, Then
         assertThrows(DuplicateEmailException.class, () -> userService.registerUser(registrationDTO));
         verify(passwordEncoder, never()).encode(anyString());
         verify(userRepository, never()).save(any(User.class));
@@ -62,25 +57,20 @@ public class UserServiceTest {
 
     @Test
     void testValidateLoginData_ValidLoginData_ReturnsTrue() {
-        // Given
         UserLoginDTO loginDTO = new UserLoginDTO("test@example.com", "password");
         User user = new User("test@example.com", "encodedPassword", "John", "Doe");
         when(userRepository.findByEmail(loginDTO.getEmail())).thenReturn(Optional.of(user));
         when(passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())).thenReturn(true);
 
-        // When
         boolean result = userService.validateLoginData(loginDTO);
 
-        // Then
         assertTrue(result);
     }
 
     @Test
     void testValidateLoginData_InvalidLoginData_ThrowsIllegalArgumentException() {
-        // Given
         UserLoginDTO loginDTO = new UserLoginDTO(null, null);
 
-        // When, Then
         assertThrows(IllegalArgumentException.class, () -> userService.validateLoginData(loginDTO));
         verify(userRepository, never()).findByEmail(anyString());
         verify(passwordEncoder, never()).matches(anyString(), anyString());
@@ -88,44 +78,35 @@ public class UserServiceTest {
 
     @Test
     void testGetUserByEmail() {
-        // Given
         String userEmail = "test@example.com";
         User user = new User(userEmail, "encodedPassword", "John", "Doe");
         when(userRepository.findByEmail(userEmail)).thenReturn(Optional.of(user));
 
-        // When
         User result = userService.getUserByEmail(userEmail);
 
-        // Then
         assertNotNull(result);
         assertEquals(userEmail, result.getEmail());
     }
 
     @Test
     void testGetUserByEmailWithInvalidEmail() {
-        // Given
         String userEmail = null;
 
-        // When, Then
         assertThrows(IllegalArgumentException.class, () -> userService.getUserByEmail(userEmail));
         verify(userRepository, never()).findByEmail(anyString());
     }
 
     @Test
     void testIsValidEmail_ValidEmail_ReturnsTrue() {
-        // When
         boolean result = userService.isValidEmail("test@example.com");
 
-        // Then
         assertTrue(result);
     }
 
     @Test
     void testIsValidEmail_InvalidEmail_ReturnsFalse() {
-        // When
         boolean result = userService.isValidEmail("invalid-email");
 
-        // Then
         assertFalse(result);
     }
 }
