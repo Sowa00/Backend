@@ -1,0 +1,15 @@
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\repositories\WeatherDataRepository.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\models\WeatherData.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\services\UserService.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\models\User.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\config\SecurityConfig.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\DTO\UserRegistrationDTO.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\repositories\UserRepository.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\services\WeatherDataService.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\exceptions\DuplicateEmailException.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\StacjaPogodowaStronaApplication.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\DTO\UserLoginDTO.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\exceptions\WeatherDataNotFoundException.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\controllers\UserController.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\fileHandle\Datareader.java
+C:\Users\sowa0\Desktop\Praca inżynierska stacja pogodowa\Praca inżynierska projekt\Backend\Backend\src\main\java\com\example\webportal\controllers\WeatherDataController.java

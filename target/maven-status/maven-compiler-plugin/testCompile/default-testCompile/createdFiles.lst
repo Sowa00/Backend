@@ -1,0 +1,5 @@
+com\example\webportal\services\WeatherDataServiceTest.class
+com\example\webportal\services\UserServiceTest.class
+com\example\webportal\controllers\UserControllerTest.class
+com\example\webportal\controllers\WeatherDataControllerTest.class
+com\example\webportal\StacjaPogodowaStronaApplicationTests.class
