@@ -29,7 +29,7 @@ public class Datareader {
         try {
 
 
-            File file = new File("C:\\Users\\sowa0\\Desktop\\Praca inżynierska stacja pogodowa\\AllData.txt");
+            File file = new File("C:\\Users\\sowa0\\Desktop\\Praca inżynierska stacja pogodowa\\AllDataWithChangedUnits.txt");
 
             Scanner input = new Scanner(file);
 
