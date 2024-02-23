@@ -16,6 +16,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = {"https://stacjapogodowa.serveo.net", "http://localhost:4200", "http://localhost:8000"})
 public class WeatherDataController {
 
     private WeatherDataService weatherDataService;

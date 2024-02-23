@@ -13,6 +13,7 @@ import java.util.Collections;
 
 @RestController
 @RequestMapping("/wd")
+@CrossOrigin(origins = {"https://stacjapogodowa.serveo.net", "http://localhost:4200", "http://localhost:8000"})
 public class UserController {
 
 
